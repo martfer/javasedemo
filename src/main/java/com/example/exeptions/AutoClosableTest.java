@@ -1,29 +1,31 @@
 package com.example.exeptions;
 
 
+import java.beans.BeanDescriptor;
+import java.math.BigDecimal;
+
 public class AutoClosableTest {
 
 
 
 
     public static void main(String[] args) throws MyException {
-        
-//        try (MyResource r = new MyResource()) {
-//            System.out.println("dolgoz, dolgoz: " + r.getMyName());
-//            throw new RuntimeException("hello, from exception");
-//        } catch (MyException ex) {
-//            System.out.println("MyException occured");
-//        }
-//        System.out.println("after try");
-
-        MyResource r = new MyResource();
-        try  {
+        try (MyResource r = new MyResource()) {
             System.out.println("dolgoz, dolgoz: " + r.getMyName());
             throw new RuntimeException("hello, from exception");
-
-        } finally {
-            r.close();
+        } catch (MyException ex) {
+            System.out.println("MyException occured");
         }
+        System.out.println("after try");
+//
+//        MyResource r = new MyResource();
+//        try  {
+//            System.out.println("dolgoz, dolgoz: " + r.getMyName());
+//            throw new RuntimeException("hello, from exception");
+//
+//        } finally {
+//            r.close();
+//        }
 
 
 

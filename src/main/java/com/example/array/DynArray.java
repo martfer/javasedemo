@@ -2,29 +2,34 @@ package com.example.array;
 
 import java.util.Arrays;
 
-public class DynArray {
+
+public class DynArray implements MyList{
 
     private  int SIZE = 3;
     private int idx = 0;
-    private Object[] value = new Object[SIZE];
+    private Object[] values = new Object[SIZE];
 
     public void add(Object o) {
-        value[idx++] = o;
-        if(idx == SIZE) {
+        if(idx >= SIZE) {
+            Object[] tmp = new Object[SIZE*2];
+            System.arraycopy(values, 0, tmp, 0,SIZE);
+            values = tmp;
+
             SIZE *=2;
-            Object[] tmp = new Object[SIZE];
-//            for (int i = 0; i < ; i++) {
-//
-//            }
-//            System.arraycopy();
-//            Arrays.copyOfRange(value, tmp, 0);
-
-
-//            .....
-            value = tmp;
+//            values = Arrays.copyOf(values, SIZE);
         }
+        values[idx++] = o;
+
+
     }
 
+    public int size() {
+        return idx;
+    }
+
+    public Object[] toArray() {
+        return Arrays.copyOf(values, idx);
+    }
 
     public static void main(String[] args) {
 
@@ -34,6 +39,7 @@ public class DynArray {
         dA.add("kiskutya");
         dA.add("nyuszi");
         dA.add("mica");
+        System.out.println(dA.size());
 
     }
 }

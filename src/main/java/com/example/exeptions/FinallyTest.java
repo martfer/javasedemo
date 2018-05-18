@@ -3,7 +3,7 @@ package com.example.exeptions;
 
 public class FinallyTest {
 
-    private static int hello() throws MyException {
+    private static int hello()  {
 
         try {
             System.out.println("hello body");
@@ -14,13 +14,13 @@ public class FinallyTest {
 //            throw  new RuntimeException();
         } finally {
             System.out.println("hello finally");
-                return 4;
-//            throw new OutOfMemoryError("sorry...");
+//                return 4;
+            throw new OutOfMemoryError("sorry...");
         }
 
     }
 
-    public static void main(String[] args) throws MyException {
+    public static void main(String[] args) {
         System.out.println("doit: " + hello());
         
 

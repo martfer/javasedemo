@@ -3,6 +3,8 @@ package com.example.exeptions;
 
 public class MyException extends Exception {
 
+
+
     public MyException() {
     }
 
